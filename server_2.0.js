@@ -51,7 +51,7 @@ server.use(function(req, res, next) {
 		return next(false);
 	}
 	var hash = crypto.createHash('sha256').update(pw).digest("hex");
-	helper.checkAccountValidation(hash, pool, function(response){
+	helper.checkAccountValidation(hash, function(response){
 		if(response == null){
 			res.send(400, "Login failed or not signed in");
 			return next(false);
@@ -61,6 +61,7 @@ server.use(function(req, res, next) {
 		req.isMod = (response.moderator == 1);
 		req.nick = response.nick;
 		req.userID = response.id;
+		req.hash = hash;
 		return next();
 	});
 });
@@ -69,5 +70,19 @@ server.post('/login', requests.login);
 server.post('/search', requests.search);
 server.post('/category', requests.category);
 server.post('/create', requests.create);
+server.post('/reviews', requests.reviews);
+server.post('/review', requests.review);
+server.post('/reviewsNotReviewed', requests.reviewsNotReviewed);
+server.post('/setReviewed', requests.setReviewed);
+server.post('/isMod', requests.isMod);
+server.post('/isCreator', requests.isCreator);
+server.post('/delete', requests.delete);
+server.post('/nick', requests.nick);
+server.post('/addAnswer', requests.addAnswer);
+server.post('/getAnswers', requests.getAnswers);
+server.post('/deleteAnswer', requests.deleteAnswer);
+server.post('/getRandomReview', requests.getRandomReview);
+server.post('/createAccount', requests.createAccount);
+server.post('/top20', requests.top20);
 
 server.listen(43253);
