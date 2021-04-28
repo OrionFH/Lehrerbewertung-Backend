@@ -1,0 +1,16 @@
+{
+    "SSL_Keys": {
+      "privkey": "PATH TO PRIVATE KEY FILE",
+      "certificate": "PATH TO CERTIFICATE FILE"
+    },
+    "CORS": {
+        "URL": "URL TO ACCESS YOUR SITE (e.g. https://lehrerbewertung.org)"
+    },
+    "MYSQL": {
+        "host": "localhost",
+        "database": "standard",
+        "user": "YOU SQL USERNAME",
+        "password": "YOUR SQL PASSWORD"
+    },
+    "TOKEN_SECRET": "YOUR RANDOMLY GENERATED STRING OF CHARACTERS (can be anything, but don't make it too short)"
+}
